@@ -10,7 +10,7 @@ SRC_URI[sha256sum] = "2190050bcf2df5617e75a9f861328195855e002115da19a1a9131baab2
 
 LIC_FILES_CHKSUM = "file://${WORKDIR}/linux-${PV}/COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
-MACHINE_KERNEL_PR_append = ".1"
+MACHINE_KERNEL_PR_append = ".2"
 
 inherit machine_kernel_pr
 
@@ -37,7 +37,7 @@ SRC_URI += "http://code-ini.com/software/kernel/bcm7362-linux-${KV}-${SRCDATE}.t
 	file://it913x-switch-off-PID-filter-by-default.patch \
 	file://mxl5007t-add-no_probe-and-no_reset-parameters.patch \
 	file://tda18271-advertise-supported-delsys.patch \
-	file://rt2800usb_fix_warn_tx_status_timeout_to_dbg.patch \
+    file://brcm_remove_entire_mtd.patch \
 	"
 
 S = "${WORKDIR}/linux-${PV}"
