@@ -1,0 +1,102 @@
+SUMMARY = "Base packages require for image."
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690 \
+                    file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
+
+ALLOW_EMPTY_${PN} = "1"
+
+PV = "1.0"
+PR = "r16"
+
+inherit packagegroup
+
+DEPENDS = " \
+    freetype \
+    gettext-native \
+    gstreamer \
+    gst-plugins-base \
+    gst-plugin-subsink \
+    jpeg \
+    libdreamdvd libdvbsi++ libfribidi libmad libpng libsigc++-1.2 libungif libxml2 libxmlccwrap \
+    openssl \
+    swig-native \
+    tuxtxt-enigma2 \
+    ${@base_contains("TARGET_ARCH", "sh4", "libmmeimage " , "", d)} \
+    "
+
+RDEPENDS_${PN} = "\
+    alsa-conf \
+    ethtool \
+    glibc-gconv-iso8859-15 \
+	titan \
+    openssh-sftp-server \
+    ntfs-3g \
+    hddtemp \
+    busybox-cron \
+    rtmpdump \
+    packagegroup-base-smbfs-client \
+    ${@base_contains("MACHINE_FEATURES", "dreambox", "", "ofgwrite", d)} \	
+    bash \
+    "
+
+RRECOMMENDS_${PN} = " \
+    glib-networking \
+    gst-plugin-subsink \
+    ${@base_contains("TARGET_ARCH", "mipsel", "gst-plugin-libxt" , "", d)} \
+    ${GST_BASE_RDEPS} \
+    ${GST_GOOD_RDEPS} \
+    ${GST_BAD_RDEPS} \
+    ${GST_UGLY_RDEPS} \
+    "
+
+GST_BASE_RDEPS = " \
+    gst-plugins-base-app \
+    gst-plugins-base-audioconvert \
+    gst-plugins-base-audioresample \
+    gst-plugins-base-decodebin \
+    gst-plugins-base-decodebin2 \
+    gst-plugins-base-ivorbisdec \
+    gst-plugins-base-ogg \
+    gst-plugins-base-playbin \
+    gst-plugins-base-subparse \
+    gst-plugins-base-typefindfunctions \
+    "
+
+GST_GOOD_RDEPS = " \
+    gst-plugins-good-apetag \
+    gst-plugins-good-audioparsers \
+    gst-plugins-good-autodetect \
+    gst-plugins-good-avi \
+    gst-plugins-good-flac \
+    gst-plugins-good-flv \
+    gst-plugins-good-icydemux \
+    gst-plugins-good-id3demux \
+    gst-plugins-good-isomp4 \
+    gst-plugins-good-matroska \
+    gst-plugins-good-rtp \
+    gst-plugins-good-rtpmanager \
+    gst-plugins-good-rtsp \
+    gst-plugins-good-souphttpsrc \
+    gst-plugins-good-udp \
+    gst-plugins-good-wavparse \
+    "
+
+GST_BAD_RDEPS = " \
+    gst-plugins-bad-cdxaparse \
+    gst-plugins-bad-mms \
+    gst-plugins-bad-mpegdemux \
+    gst-plugins-bad-rtmp \
+    gst-plugins-bad-vcdsrc \
+    gst-plugins-bad-h264parse \
+    "
+
+GST_UGLY_RDEPS = " \
+    gst-plugins-ugly-amrnb \
+    gst-plugins-ugly-amrwbdec \
+    gst-plugins-ugly-asf \
+    gst-plugins-ugly-cdio \
+    gst-plugins-ugly-dvdsub \
+    gst-plugins-ugly-mad \
+    gst-plugins-ugly-mpegaudioparse \
+    gst-plugins-ugly-mpegstream \
+    "

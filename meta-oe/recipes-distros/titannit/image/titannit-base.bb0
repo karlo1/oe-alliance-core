@@ -1,0 +1,81 @@
+SUMMARY = "Base packages require for image."
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690 \
+                    file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
+
+ALLOW_EMPTY_${PN} = "1"
+
+PV = "1.0"
+PR = "r16"
+
+inherit packagegroup
+
+RDEPENDS_${PN} = "\
+    libpng \
+	titannit-bootlogo \
+    freetype \
+    gstreamer \
+    gst-plugins-base \
+    gst-plugin-subsink \
+    glib-networking \
+    gst-plugins-base-app \
+    gst-plugins-base-audioconvert \
+    gst-plugins-base-audioresample \
+    gst-plugins-base-decodebin \
+    gst-plugins-base-decodebin2 \
+    gst-plugins-base-ivorbisdec \
+    gst-plugins-base-ogg \
+    gst-plugins-base-playbin \
+    gst-plugins-base-subparse \
+    gst-plugins-base-typefindfunctions \
+    gst-plugins-good-apetag \
+    gst-plugins-good-audioparsers \
+    gst-plugins-good-autodetect \
+    gst-plugins-good-avi \
+    gst-plugins-good-flac \
+    gst-plugins-good-flv \
+    gst-plugins-good-icydemux \
+    gst-plugins-good-id3demux \
+    gst-plugins-good-isomp4 \
+    gst-plugins-good-matroska \
+    gst-plugins-good-rtp \
+    gst-plugins-good-rtpmanager \
+    gst-plugins-good-rtsp \
+    gst-plugins-good-souphttpsrc \
+    gst-plugins-good-udp \
+    gst-plugins-good-wavparse \
+    gst-plugins-bad-cdxaparse \
+    gst-plugins-bad-mms \
+    gst-plugins-bad-mpegdemux \
+    gst-plugins-bad-rtmp \
+    gst-plugins-bad-vcdsrc \
+    gst-plugins-bad-h264parse \
+    gst-plugins-ugly-amrnb \
+    gst-plugins-ugly-amrwbdec \
+    gst-plugins-ugly-asf \
+    gst-plugins-ugly-cdio \
+    gst-plugins-ugly-dvdsub \
+    gst-plugins-ugly-mad \
+    gst-plugins-ugly-mpegaudioparse \
+    gst-plugins-ugly-mpegstream \
+    gst-plugin-subsink \
+    ${@base_contains("TARGET_ARCH", "mipsel", "gst-plugin-libxt" , "", d)} \
+    jpeg \
+    libdreamdvd \
+    openssl \
+    tuxtxt-enigma2 \
+    ${@base_contains("TARGET_ARCH", "sh4", "libmmeimage " , "", d)} \
+    alsa-conf \
+    ethtool \
+    glibc-gconv-iso8859-15 \
+	titan-bin \
+	titan-plugins \
+    openssh-sftp-server \
+    ntfs-3g \
+    hddtemp \
+    busybox-cron \
+    rtmpdump \
+    packagegroup-base-smbfs-client \
+    ${@base_contains("MACHINE_FEATURES", "dreambox", "", "ofgwrite", d)} \	
+    bash \
+    "
