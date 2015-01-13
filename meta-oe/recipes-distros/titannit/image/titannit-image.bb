@@ -12,7 +12,61 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 #    ${@base_contains("MACHINE_FEATURES", "dvbc-only", "", "enigma2-plugin-settings-defaultsat", d)}
 
-IMAGE_INSTALL = "titannit-base \
+IMAGE_INSTALL = "\
+	titannit-version-info \
+    curl \
+	titannit-bootlogo \
+    rtmpdump \
+    gstreamer \
+    gst-plugins-base \
+    gst-plugins-good \
+    gst-plugins-bad \
+    gst-plugins-ugly \
+    gst-plugin-subsink \
+    ethtool \
+    ${@base_contains("TARGET_ARCH", "mipsel", "gst-plugin-libxt" , "", d)} \
+    libdreamdvd \
+    openssl \
+    tuxtxt-enigma2 \
+    ${@base_contains("TARGET_ARCH", "sh4", "libmmeimage " , "", d)} \
+    ${@base_contains("MACHINE_FEATURES", "dreambox", "", "ofgwrite", d)} \	
+    bash \
+    glib-networking \
+    libcrypto-compat-0.9.7 \
+    libcrypto-compat-0.9.8 \
+    procps \
+    ntfs-3g \
+    zip \
+    hddtemp \
+    minidlna \
+    autofs \
+    djmount \
+    parted \
+    ${@base_contains("MACHINE_FEATURES", "iniwol", "ini-coldboot ini-ethwol", "", d)} \
+    ${@base_contains("MACHINE_FEATURES", "no-nmap", "" , "nmap", d)} \
+    ${@base_contains("TARGET_ARCH", "sh4", "alsa-utils-amixer-conf" , "", d)} \
+    avahi-daemon \
+    dropbear \
+    early-configure \
+    e2fsprogs-mke2fs \
+    e2fsprogs-e2fsck \
+    e2fsprogs-tune2fs \
+    fakelocale \
+    libavahi-client \
+    libcrypto-compat-0.9.8 \
+    modutils-loadscript \
+    ntpdate \
+    opkg \
+    sdparm \
+    curlftpfs \
+    packagegroup-core-boot \
+    tzdata tzdata-europe tzdata-australia tzdata-asia tzdata-pacific tzdata-africa tzdata-americas \
+    util-linux-sfdisk \
+    util-linux-blkid \
+    volatile-media \
+    vsftpd \
+    titan-bin \
+    titan-plugins \
     ${@base_contains("MACHINE_FEATURES", "dvbc-only", "", "", d)} \
     ${@base_contains("MACHINE_FEATURES", "singlecore", "", \
     " \
