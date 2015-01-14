@@ -70,7 +70,6 @@ IMAGE_INSTALL = "\
     gst-plugins-good-souphttpsrc \
     gst-plugins-good-udp \
     gst-plugins-good-wavparse \
-	gst-plugin-dvbmediasink \
     gst-plugin-subsink \
     gst-plugins-ugly \
     gst-plugins-ugly-amrnb \
@@ -83,6 +82,11 @@ IMAGE_INSTALL = "\
     gst-plugins-ugly-mpegstream \
     gstreamer \
     hddtemp \
+    kernel-module-usbserial \
+    kernel-module-ftdi-sio \
+    kernel-module-pl2303 \
+    kernel-module-belkin-sa \
+    kernel-module-keyspan \
     libavahi-client \
     libcrypto-compat-0.9.7 \
     libcrypto-compat-0.9.8 \
