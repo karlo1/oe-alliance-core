@@ -70,6 +70,7 @@ IMAGE_INSTALL = "\
     gst-plugins-good-souphttpsrc \
     gst-plugins-good-udp \
     gst-plugins-good-wavparse \
+	gst-plugin-dvbmediasink \
     gst-plugin-subsink \
     gst-plugins-ugly \
     gst-plugins-ugly-amrnb \
