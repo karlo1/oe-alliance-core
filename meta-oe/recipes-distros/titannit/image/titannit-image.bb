@@ -65,6 +65,15 @@ IMAGE_INSTALL = "\
     util-linux-blkid \
     volatile-media \
     vsftpd \
+    mtd-utils \
+    module-init-tools-depmod \
+    fuse-exfat \
+    strace \
+    wakelan \
+    gst-ffmpeg \
+    pngquant \
+    ${@base_conditional('MACHINE', 'dm800', '', 'mtd-utils-ubifs', d)} \
+    ${@base_contains("MACHINE_FEATURES", "libpassthrough", "libpassthrough libdlsym", "", d)} \     
     titan-bin \
     titan-plugins \
     ${@base_contains("MACHINE_FEATURES", "dvbc-only", "", "", d)} \
