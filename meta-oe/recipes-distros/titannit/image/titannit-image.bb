@@ -26,7 +26,7 @@ IMAGE_INSTALL = "\
     ethtool \
     fakelocale \
     fuse-exfat \
-    gettext-native \
+    gettext \
     glibc-gconv-iso8859-15 \
     glib-networking \
     gst-ffmpeg \
