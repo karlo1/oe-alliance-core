@@ -26,7 +26,6 @@ IMAGE_INSTALL = "\
     ethtool \
     fakelocale \
     fuse-exfat \
-    gettext \
     glibc-gconv-iso8859-15 \
     glib-networking \
     gst-ffmpeg \
@@ -81,7 +80,6 @@ IMAGE_INSTALL = "\
     gst-plugins-ugly-mpegaudioparse \
     gst-plugins-ugly-mpegstream \
     gstreamer \
-    hddtemp \
     kernel-module-usbserial \
     kernel-module-ftdi-sio \
     kernel-module-pl2303 \
@@ -93,7 +91,6 @@ IMAGE_INSTALL = "\
     libdreamdvd \
     libdvdcss \
     minidlna \
-    mjpegtools \
     module-init-tools-depmod \
     modutils-loadscript \
     mtd-utils \
@@ -119,7 +116,6 @@ IMAGE_INSTALL = "\
     wakelan \
     wireless-tools \
     wpa-supplicant \
-    zip \
     ${@base_conditional('MACHINE', 'dm800', '', 'mtd-utils-ubifs', d)} \
     ${@base_contains("MACHINE_FEATURES", "dreambox", "", "ofgwrite", d)} \
     ${@base_contains("MACHINE_FEATURES", "dvbc-only", "", "", d)} \
@@ -134,9 +130,10 @@ IMAGE_INSTALL = "\
     ${@base_contains("TARGET_ARCH", "mipsel", "gst-plugin-libxt" , "", d)} \
     ${@base_contains("TARGET_ARCH", "sh4", "alsa-utils-amixer-conf" , "", d)} \
     ${@base_contains("TARGET_ARCH", "sh4", "libmmeimage " , "", d)} \
-    titan-bin \
-    titan-plugins \
     "
+# disabled building on svn
+#    titan-bin
+#    titan-plugins
 
 export IMAGE_BASENAME = "titannit-image"
 IMAGE_LINGUAS = ""
