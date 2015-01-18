@@ -11,6 +11,7 @@ PR = "r${DATETIME}"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 IMAGE_INSTALL = "\
+    aio-grab \
     alsa-conf \
     autofs \
     avahi-daemon \
@@ -27,6 +28,7 @@ IMAGE_INSTALL = "\
     fakelocale \
     fuse-exfat \
     glibc-gconv-iso8859-15 \
+    glibc-gconv-utf8 \
     glib-networking \
     gst-ffmpeg \
     gst-plugins-bad \
