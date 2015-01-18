@@ -28,7 +28,6 @@ IMAGE_INSTALL = "\
     fakelocale \
     fuse-exfat \
     glibc-gconv-iso8859-15 \
-    glibc-gconv-utf8 \
     glib-networking \
     gst-ffmpeg \
     gst-plugins-bad \
