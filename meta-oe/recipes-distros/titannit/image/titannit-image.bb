@@ -91,6 +91,7 @@ IMAGE_INSTALL = "\
     libcrypto-compat-0.9.8 \
     libdreamdvd \
     libdvdcss \
+    libusb \
     minidlna \
     module-init-tools-depmod \
     modutils-loadscript \
