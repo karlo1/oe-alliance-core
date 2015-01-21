@@ -23,6 +23,7 @@ DEPENDS = "\
     gst-plugins-bad \
     gst-plugins-ugly \
     gst-plugin-subsink \
+    titan-gmediarender \
     glib-networking \
     ethtool \
     ${@base_contains("TARGET_ARCH", "mipsel", "gst-plugin-libxt" , "", d)} \

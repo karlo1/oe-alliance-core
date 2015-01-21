@@ -109,6 +109,7 @@ IMAGE_INSTALL = "\
     strace \
     titannit-bootlogo \
     titannit-version-info \
+    titan-gmediarender \
     tuxtxt-enigma2 \
     tzdata tzdata-europe tzdata-australia tzdata-asia tzdata-pacific tzdata-africa tzdata-americas \
     util-linux-blkid \
