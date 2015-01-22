@@ -85,6 +85,10 @@ PR = "r2"
 
 SRC_URI="git://github.com/hzeller/gmrender-resurrect.git;protocol=https"
 
+SRC_URI += " \
+		file://gmediarener.picture.patch \
+"
+
 S = "${WORKDIR}/git"
 
 inherit autotools pkgconfig

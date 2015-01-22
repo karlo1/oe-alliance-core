@@ -1,0 +1,77 @@
+--- a/src/output_gstreamer.c	2015-01-21 21:20:01.000000000 +0100
++++ a/src/output_gstreamer.c.patched	2015-01-22 19:50:08.000000000 +0100
+@@ -34,6 +34,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <fcntl.h>
+ 
+ #include "logging.h"
+ #include "upnp_connmgr.h"
+@@ -180,7 +181,55 @@
+ 	SongMetaData_clear(&song_meta_);
+ }
+ 
++int ostrcasecmp(char* value1, char* value2)
++{
++	int ret = 1;
++
++	if(value1 != NULL && value2 != NULL)
++		ret = strcasecmp(value1, value2);
++
++	return ret;
++}
++
++int cmpfilenameext(char* filename, char* ext)
++{
++	char* zeichen = NULL;
++
++	if(filename == NULL) return 1;
++
++	zeichen = strrchr(filename, '.');
++	if(zeichen != NULL)
++	{
++		if(ostrcasecmp(zeichen, ext) == 0) return 0;
++	}
++
++	return 1;
++}
++
++int output_picture(char* pic)
++{
++	int fifo = -1;
++
++	if(pic == NULL) return -1;
++
++	fifo = open("/tmp/gmediarender", O_WRONLY);
++
++	if(fifo > -1)
++		write(fifo, pic, strlen(pic) + 1);
++
++	close(fifo);
++	return 0;
++}
++
+ static int output_gstreamer_play(output_transition_cb_t callback) {
++
++	//send pic to titan
++	if(gsuri_ != NULL && (cmpfilenameext(gsuri_, ".jpg") == 0 || cmpfilenameext(gsuri_, ".png") == 0))
++	{
++		output_picture(gsuri_);
++		return 0;
++	}
++
+ 	play_trans_callback_ = callback;
+ 	if (get_current_player_state() != GST_STATE_PAUSED) {
+ 		if (gst_element_set_state(player_, GST_STATE_READY) ==
+--- a/src/output_gstreamer.h	2015-01-22 19:10:04.000000000 +0100
++++ a/src/output_gstreamer.h.patched	2015-01-22 19:13:00.000000000 +0100
+@@ -26,4 +26,8 @@
+ 
+ extern struct output_module gstreamer_output;
+ 
++int ostrcasecmp(char* value1, char* value2);
++int cmpfilenameext(char* filename, char* ext);
++int output_picture(char* pic);
++
+ #endif /*  _OUTPUT_GSTREAMER_H */
