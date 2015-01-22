@@ -8,6 +8,7 @@ DEPENDS = " \
 	glib-2.0 \
 	gstreamer1.0-plugins-base \
 	gstreamer1.0 \
+	gstreamer1.0-plugin-subsink \
 	"
 
 RRECOMMENDS_${PN} = " \
