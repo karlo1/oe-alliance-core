@@ -92,3 +92,5 @@ SRC_URI += " \
 S = "${WORKDIR}/git"
 
 inherit autotools pkgconfig
+
+FILES_${PN} = "/usr/share/gmediarender"
