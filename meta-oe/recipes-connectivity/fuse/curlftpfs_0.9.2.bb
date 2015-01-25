@@ -14,6 +14,10 @@ SRC_URI = "${SOURCEFORGE_MIRROR}/curlftpfs/${P}.tar.gz"
 
 S = "${WORKDIR}/${P}"
 
+SRC_URI += " \
+		file://curlftpfs-add-pret-support.patch \
+"
+
 inherit autotools pkgconfig
 
 SRC_URI[md5sum] = "b452123f755114cd4461d56c648d9f12"
