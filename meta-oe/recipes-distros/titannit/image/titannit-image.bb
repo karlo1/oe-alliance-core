@@ -110,6 +110,7 @@ IMAGE_INSTALL = "\
     titannit-bootlogo \
     titannit-version-info \
     titan-gmediarender \
+    titan-rarfs \
     tuxtxt-enigma2 \
     tzdata tzdata-europe tzdata-australia tzdata-asia tzdata-pacific tzdata-africa tzdata-americas \
     util-linux-blkid \
