@@ -16,6 +16,9 @@ S = "${WORKDIR}/${P}"
 
 SRC_URI += " \
 		file://curlftpfs-add-pret-support.patch \
+		file://curlftpfs-nocache-memleak-fix.patch \
+		file://curlftpfs-fix-CURLOPT_INFILESIZE.patch \
+		file://curlftpfs-free_ftpfs_file-memleak-fix.patch \
 "
 
 inherit autotools pkgconfig
