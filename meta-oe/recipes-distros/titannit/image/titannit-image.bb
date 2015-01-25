@@ -104,6 +104,8 @@ IMAGE_INSTALL = "\
     parted \
     pngquant \
     procps \
+    rt8812au \
+    rt8723a \
     rtmpdump \
     sdparm \
     strace \
