@@ -86,6 +86,7 @@ IMAGE_INSTALL = "\
     kernel-module-pl2303 \
     kernel-module-belkin-sa \
     kernel-module-keyspan \
+    kernel-module-ipv6 \
     libavahi-client \
     libcrypto-compat-0.9.7 \
     libcrypto-compat-0.9.8 \
