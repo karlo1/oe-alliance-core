@@ -8,7 +8,7 @@
  
  #include "logging.h"
  #include "upnp_connmgr.h"
-@@ -180,7 +181,55 @@
+@@ -180,7 +181,59 @@
  	SongMetaData_clear(&song_meta_);
  }
  
@@ -60,6 +60,10 @@
 +		output_picture(gsuri_);
 +		return 0;
 +	}
++	else if(gsuri_ != NULL && (cmpfilenameext(gsuri_, ".mp3") == 0 || cmpfilenameext(gsuri_, ".wma") == 0 || cmpfilenameext(gsuri_, ".ogg") == 0 || cmpfilenameext(gsuri_, ".flac") == 0 || cmpfilenameext(gsuri_, ".wav") == 0))
++		output_picture("saver.png");
++	else
++		output_picture("clear.png");
 +
  	play_trans_callback_ = callback;
  	if (get_current_player_state() != GST_STATE_PAUSED) {
