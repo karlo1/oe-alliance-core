@@ -13,6 +13,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 IMAGE_INSTALL = "\
     aio-grab \
     alsa-conf \
+    alsa-utils \
     autofs \
     avahi-daemon \
     bash \
