@@ -111,9 +111,9 @@
  }
  int output_set_volume(float value) {
 +//	printf("1output_set_volume: %f\n",value);
-+	int ret = (int)ceil((float)(value * 100));
-+//	printf("2output_set_volume ret: %d\n",ret);
-+	writesys("/tmp/.dlnavol", oitoa(ret), 0);
++	int ret = 63 - (int)ceil((float)(value * 100)) * 63 / 100;
++	printf("2output_set_volume ret: %d\n",ret);
++//	writesys("/proc/stb/avs/0/volume", oitoa(ret), 0);
  	if (output_module && output_module->set_volume) {
 +//		printf("9output_set_volume: %f\n",value);
  		return output_module->set_volume(value);
