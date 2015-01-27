@@ -142,6 +142,7 @@ IMAGE_INSTALL = "\
 # disabled building on svn
 #    titan-bin
 #    titan-plugins
+#    enigma2-locale-meta test fpr glibc only
 
 export IMAGE_BASENAME = "titannit-image"
 IMAGE_LINGUAS = ""
