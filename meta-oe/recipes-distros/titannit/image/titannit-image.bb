@@ -95,6 +95,7 @@ IMAGE_INSTALL = "\
     libdvdcss \
     libusb1 \
     minidlna \
+    mjpegtools \
     module-init-tools-depmod \
     modutils-loadscript \
     mtd-utils \
