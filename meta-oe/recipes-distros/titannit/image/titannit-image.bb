@@ -88,7 +88,6 @@ IMAGE_INSTALL = "\
     kernel-module-belkin-sa \
     kernel-module-keyspan \
     kernel-module-ipv6 \
-    kernel-module-rt2800usb \
     libavahi-client \
     libcrypto-compat-0.9.7 \
     libcrypto-compat-0.9.8 \
@@ -126,6 +125,18 @@ IMAGE_INSTALL = "\
     wakelan \
     wireless-tools \
     wpa-supplicant \
+	\
+	firmware-rtl8192cu \
+	firmware-rt2870 \
+	firmware-rt3070 \
+    kernel-module-rt2800usb \
+    kernel-module-rtl8192cu \
+    rt8812au \
+    rt8723a \
+	rtl8192cu \
+    rt3070 \
+	rt8812au \
+	\	
     ${@base_conditional('MACHINE', 'dm800', '', 'mtd-utils-ubifs', d)} \
     ${@base_contains("MACHINE_FEATURES", "dreambox", "", "ofgwrite", d)} \
     ${@base_contains("MACHINE_FEATURES", "dvbc-only", "", "", d)} \
