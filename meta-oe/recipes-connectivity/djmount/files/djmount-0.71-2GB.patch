@@ -1,0 +1,24 @@
+diff -r -u djmount-0.71/djmount/file_buffer.h djmount-0.71-patched/djmount/file_buffer.h
+--- djmount-0.71/djmount/file_buffer.h	2006-08-27 22:12:20.000000000 +0200
++++ djmount-0.71-patched/djmount/file_buffer.h	2012-09-24 16:38:45.000000000 +0200
+@@ -60,7 +60,7 @@
+  *
+  *****************************************************************************/
+ 
+-#define FILE_BUFFER_MAX_CONTENT_LENGTH		((uintmax_t) INT_MAX)
++#define FILE_BUFFER_MAX_CONTENT_LENGTH		((uintmax_t) ~0ULL)
+ 
+ 
+ /*****************************************************************************
+diff -r -u djmount-0.71/djmount/media_file.c djmount-0.71-patched/djmount/media_file.c
+--- djmount-0.71/djmount/media_file.c	2006-08-27 22:12:20.000000000 +0200
++++ djmount-0.71-patched/djmount/media_file.c	2012-09-24 16:39:16.000000000 +0200
+@@ -282,7 +282,7 @@
+ {
+ 	const char* const str = ixmlElement_getAttribute (file->res, "size");
+ 	off_t res;
+-	STRING_TO_INT (str, res, -1);
++	STRING_TO_INT (str, res, 8ULL * 1024 * 1024 * 1024);
+ 	return res;
+ }
+ 

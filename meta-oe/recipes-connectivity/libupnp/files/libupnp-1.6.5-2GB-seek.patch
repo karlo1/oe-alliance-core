@@ -1,0 +1,107 @@
+diff -r -c libupnp-1.6.5/upnp/inc/upnp.h libupnp-1.6.5-patched/upnp/inc/upnp.h
+*** libupnp-1.6.5/upnp/inc/upnp.h	Sun Jan 27 02:16:10 2008
+--- libupnp-1.6.5-patched/upnp/inc/upnp.h	Mon Sep 24 16:29:30 2012
+***************
+*** 2390,2398 ****
+  	IN OUT int *httpStatus,	    /** The status returned on receiving a 
+  				        response message from the remote 
+  					server. */
+! 	IN int lowRange,            /** An integer value representing the low 
+  				        end of a range to retrieve. */
+! 	IN int highRange,           /** An integer value representing the high 
+  				        end of a range to retrieve. */
+  	IN int timeout	            /** A time out value sent with the request 
+  				      	during which a response is expected 
+--- 2390,2398 ----
+  	IN OUT int *httpStatus,	    /** The status returned on receiving a 
+  				        response message from the remote 
+  					server. */
+! 	IN unsigned long long lowRange,            /** An integer value representing the low 
+  				        end of a range to retrieve. */
+! 	IN unsigned long long highRange,           /** An integer value representing the high 
+  				        end of a range to retrieve. */
+  	IN int timeout	            /** A time out value sent with the request 
+  				      	during which a response is expected 
+diff -r -c libupnp-1.6.5/upnp/src/api/upnpapi.c libupnp-1.6.5-patched/upnp/src/api/upnpapi.c
+*** libupnp-1.6.5/upnp/src/api/upnpapi.c	Tue Nov 27 05:56:02 2007
+--- libupnp-1.6.5-patched/upnp/src/api/upnpapi.c	Mon Sep 24 16:30:11 2012
+***************
+*** 3132,3139 ****
+                     IN OUT char **contentType,
+                     OUT int *contentLength,
+                     OUT int *httpStatus,
+!                    IN int lowRange,
+!                    IN int highRange,
+                     IN int timeout )
+  {
+      return http_OpenHttpGetEx( url_str,
+--- 3132,3139 ----
+                     IN OUT char **contentType,
+                     OUT int *contentLength,
+                     OUT int *httpStatus,
+!                    IN unsigned long long lowRange,
+!                    IN unsigned long long highRange,
+                     IN int timeout )
+  {
+      return http_OpenHttpGetEx( url_str,
+diff -r -c libupnp-1.6.5/upnp/src/genlib/net/http/httpreadwrite.c libupnp-1.6.5-patched/upnp/src/genlib/net/http/httpreadwrite.c
+*** libupnp-1.6.5/upnp/src/genlib/net/http/httpreadwrite.c	Tue Nov 13 05:12:45 2007
+--- libupnp-1.6.5-patched/upnp/src/genlib/net/http/httpreadwrite.c	Mon Sep 24 16:32:03 2012
+***************
+*** 2170,2177 ****
+                      IN OUT char **contentType,
+                      OUT int *contentLength,
+                      OUT int *httpStatus,
+!                     IN int lowRange,
+!                     IN int highRange,
+                      IN int timeout )
+  {
+      int http_error_code;
+--- 2170,2177 ----
+                      IN OUT char **contentType,
+                      OUT int *contentLength,
+                      OUT int *httpStatus,
+!                     IN unsigned long long lowRange,
+!                     IN unsigned long long highRange,
+                      IN int timeout )
+  {
+      int http_error_code;
+***************
+*** 2205,2211 ****
+          }
+  
+          memset( &rangeBuf, 0, sizeof( rangeBuf ) );
+!         sprintf( rangeBuf.RangeHeader, "Range: bytes=%d-%d\r\n",
+                   lowRange, highRange );
+  
+          membuffer_init( &request );
+--- 2205,2211 ----
+          }
+  
+          memset( &rangeBuf, 0, sizeof( rangeBuf ) );
+!         sprintf( rangeBuf.RangeHeader, "Range: bytes=%llu-%llu\r\n",
+                   lowRange, highRange );
+  
+          membuffer_init( &request );
+diff -r -c libupnp-1.6.5/upnp/src/inc/httpreadwrite.h libupnp-1.6.5-patched/upnp/src/inc/httpreadwrite.h
+*** libupnp-1.6.5/upnp/src/inc/httpreadwrite.h	Tue Nov 13 05:11:52 2007
+--- libupnp-1.6.5-patched/upnp/src/inc/httpreadwrite.h	Mon Sep 24 16:32:54 2012
+***************
+*** 577,584 ****
+  		     IN OUT char **contentType,
+  		     OUT int *contentLength,
+  		     OUT int *httpStatus,
+! 			 IN int lowRange,
+! 			 IN int highRange,
+  		     IN int timeout);
+  
+  
+--- 577,584 ----
+  		     IN OUT char **contentType,
+  		     OUT int *contentLength,
+  		     OUT int *httpStatus,
+! 			 IN unsigned long long lowRange,
+! 			 IN unsigned long long highRange,
+  		     IN int timeout);
+  
+  

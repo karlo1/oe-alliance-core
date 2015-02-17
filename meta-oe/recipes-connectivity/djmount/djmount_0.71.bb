@@ -18,6 +18,7 @@ SRC_URI = "${SOURCEFORGE_MIRROR}/djmount/djmount-0.71.tar.gz \
     file://init \
     file://configure.ac.patch \
     file://rt_bool_arg_enable.m4.patch \
+    file://djmount-0.71-2GB.patch \
     "
 
 SRC_URI[md5sum] = "c922753e706c194bf82a8b6ca77e6a9a"
