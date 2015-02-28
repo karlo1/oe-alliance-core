@@ -89,10 +89,12 @@ IMAGE_INSTALL = "\
     kernel-module-keyspan \
     kernel-module-ipv6 \
     libavahi-client \
+    libtalloc \
     libcrypto-compat-0.9.7 \
     libcrypto-compat-0.9.8 \
     libdreamdvd \
     libdvdcss \
+    libpopt \
     libusb1 \
     minidlna \
     mjpegtools \
