@@ -111,6 +111,7 @@ IMAGE_INSTALL = "\
     rt8723a \
     rtmpdump \
     sdparm \
+    smbclient \
     strace \
     titannit-bootlogo \
     titannit-version-info \
