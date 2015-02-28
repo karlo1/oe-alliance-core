@@ -88,19 +88,19 @@ IMAGE_INSTALL = "\
     kernel-module-belkin-sa \
     kernel-module-keyspan \
     kernel-module-ipv6 \
-    libtalloc \
     libavahi-client \
     libcrypto-compat-0.9.7 \
     libcrypto-compat-0.9.8 \
     libdreamdvd \
     libdvdcss \
     libusb1 \
-    libpopt \
     minidlna \
     mjpegtools \
     module-init-tools-depmod \
     modutils-loadscript \
     mtd-utils \
+    nfs-utils \
+    nfs-utils-client \
     ntfs-3g \
     ntpdate \
     openssl \
@@ -109,11 +109,15 @@ IMAGE_INSTALL = "\
     parted \
     pngquant \
     procps \
+    portmap \
+    portmap-utils \
     rt8812au \
     rt8723a \
     rtmpdump \
     sdparm \
     smbclient \
+    smbnetfs \
+    sambaserver \
     strace \
     titannit-bootlogo \
     titannit-version-info \
