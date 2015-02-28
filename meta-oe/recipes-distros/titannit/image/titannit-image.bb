@@ -94,8 +94,8 @@ IMAGE_INSTALL = "\
     libcrypto-compat-0.9.8 \
     libdreamdvd \
     libdvdcss \
-    libpopt \
     libusb1 \
+    libpopt \
     minidlna \
     mjpegtools \
     module-init-tools-depmod \
