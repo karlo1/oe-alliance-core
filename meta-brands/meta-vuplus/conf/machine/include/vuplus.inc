@@ -16,7 +16,6 @@ MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS = "\
 
 MACHINE_EXTRA_RRECOMMENDS = " \
     vuplus-shutdown \
-    vuplus-gst-plugin-dvbmediasink \
     "
 
 include conf/machine/include/autoload-filesystems.inc
