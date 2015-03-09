@@ -29,6 +29,7 @@ SRC_URI = "http://archive.vuplus.com/download/kernel/stblinux-${KV}.tar.bz2 \
     file://tda18271-advertise-supported-delsys.patch \
     file://mxl5007t-add-no_probe-and-no_reset-parameters.patch \
     file://linux-tcp_output.patch \
+    file://brcm_remove_entire_mtd.patch \
     "
 
 SRC_URI_append_vuduo2 = "file://brcm_s3_wol.patch;patch=1;pnum=1 "
