@@ -137,7 +137,6 @@ IMAGE_INSTALL = "\
 	firmware-rt2870 \
 	firmware-rt3070 \
     kernel-module-rt2800usb \
-    kernel-module-rtl8192cu \
     rt8812au \
     rt8723a \
 	rtl8192cu \
