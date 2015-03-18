@@ -1,3 +1,0 @@
-[submodule "meta-oe/recipes-oe-alliance/enigma2-plugins/e2openplugins"]
-	path = meta-oe/recipes-oe-alliance/enigma2-plugins/e2openplugins
-	url = git://github.com/oe-alliance/e2openplugins.git
