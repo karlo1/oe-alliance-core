@@ -18,7 +18,7 @@ S = "${WORKDIR}/titan"
 
 CFLAGS = "\
 	-I${STAGING_DIR_TARGET}/usr/include \
-	-I${STAGING_DIR_TARGET}/usr/include/gstreamer-0.10 \
+	-I${STAGING_DIR_TARGET}/usr/include/gstreamer-1.0 \
 	-I${STAGING_DIR_TARGET}/usr/include/glib-2.0 \
 	-I${STAGING_DIR_TARGET}/usr/include/libxml2 \
 	-I${STAGING_DIR_TARGET}/usr/lib/glib-2.0/include \
