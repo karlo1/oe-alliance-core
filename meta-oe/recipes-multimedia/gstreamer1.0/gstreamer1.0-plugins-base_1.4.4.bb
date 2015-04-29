@@ -7,6 +7,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=c54ce9345727175ff66d17b67ff51f58 \
 
 SRC_URI += "file://do-not-change-eos-event-to-gap-event-if.patch \
             file://get-caps-from-src-pad-when-query-caps.patch \
+			file://0035-playbin2-add-custom-user-agent-property.1-44.patch \
 "
 
 SRC_URI[md5sum] = "0c42eca8f9e4efd56d2ce8e9249ce4a1"
