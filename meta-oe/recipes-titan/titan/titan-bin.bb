@@ -150,7 +150,7 @@ CFLAGS = "${@base_contains('GST_VERSION', '1.0', ' \
 	-I${STAGING_DIR_TARGET}/usr/include/dreamdvd \
 	-I${STAGING_DIR_TARGET}/usr/include/libdreamdvd \	
 	-I${WORKDIR}/titan/libdreamdvd \
-	-I${WORKDIR}/titan/titan" \
+	-I${WORKDIR}/titan/titan \
     ', ' \
 	-I${STAGING_DIR_TARGET}/usr/include \
 	-I${STAGING_DIR_TARGET}/usr/include/gstreamer-0.10 \
@@ -161,7 +161,7 @@ CFLAGS = "${@base_contains('GST_VERSION', '1.0', ' \
 	-I${STAGING_DIR_TARGET}/usr/include/dreamdvd \
 	-I${STAGING_DIR_TARGET}/usr/include/libdreamdvd \	
 	-I${WORKDIR}/titan/libdreamdvd \
-	-I${WORKDIR}/titan/titan" \
+	-I${WORKDIR}/titan/titan \
     ', d)}"
 
 do_compile() {
