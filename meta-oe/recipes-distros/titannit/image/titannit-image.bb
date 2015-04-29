@@ -103,6 +103,7 @@ IMAGE_INSTALL = "\
     packagegroup-base-smbfs \
     packagegroup-base-nfs \
     ", d)} \
+	${@base_contains("TARGET_ARCH", "mipsel", "gst-plugin-libxt" , "", d)} \
     ${@base_contains("TARGET_ARCH", "sh4", "alsa-utils-amixer-conf" , "", d)} \
     ${@base_contains("TARGET_ARCH", "sh4", "libmmeimage " , "", d)} \
 	titan-bin \

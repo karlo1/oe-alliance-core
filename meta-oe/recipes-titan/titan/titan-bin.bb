@@ -32,6 +32,7 @@ RRECOMMENDS_${PN} = " \
     ${GST_GOOD_RDEPS} \
     ${GST_BAD_RDEPS} \
     ${GST_UGLY_RDEPS} \
+    ${GST_BASE_DVD} \
     "
 
 GST_BASE_RDEPS = "${@base_contains('GST_VERSION', '1.0', ' \
@@ -137,6 +138,13 @@ GST_UGLY_RDEPS = "${@base_contains('GST_VERSION', '1.0', ' \
     gst-plugins-ugly-mpegstream \
     ', d)}"
 
+GST_BASE_DVD = "${@base_contains('GST_VERSION', '1.0', ' \
+    gstreamer1.0-plugins-bad-videoparsersbad \
+    gstreamer1.0-plugins-bad-mpegtsmux \
+    ', ' \
+    gst-plugins-bad-videoparsersbad \
+    gst-plugins-bad-mpegtsmux \
+    ', d)}"
 
 S = "${WORKDIR}/titan"
 
