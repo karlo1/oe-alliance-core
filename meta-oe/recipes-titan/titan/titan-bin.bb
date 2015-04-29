@@ -28,6 +28,7 @@ RDEPENDS_${PN} = " \
 RRECOMMENDS_${PN} = " \
     glib-networking \
     ${@base_contains("GST_VERSION", "1.0", "gstreamer1.0-plugin-subsink", "gst-plugin-subsink", d)} \
+    ${@base_contains("GST_VERSION", "1.0", "gstreamer1.0-plugin-dvbmediasink", "gst-plugin-dvbmediasink", d)} \
     ${GST_BASE_RDEPS} \
     ${GST_GOOD_RDEPS} \
     ${GST_BAD_RDEPS} \
