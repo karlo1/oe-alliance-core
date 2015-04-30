@@ -9,10 +9,10 @@ PV="15.1"
 PR="${SRCDATE}.${SRCDATE_PR}"
 
 #SRC_URI = "http://archive.vuplus.com/download/build_support/vuplus/libgles-${MACHINE}-${PV}-${PR}.tar.gz"
-SRC_URI = "http://archive.vuplus.com/download/build_support/vuplus/libgles-vusolo2-${PV}-${PR}.tar.gz"
+SRC_URI = "http://archive.vuplus.com/download/build_support/vuplus/libgles-vuduo2-${PV}-${PR}.tar.gz"
 
 #S = "${WORKDIR}/libgles-${MACHINE}"
-S = "${WORKDIR}/libgles-vusolo2"
+S = "${WORKDIR}/libgles-vuduo2"
 
 INHIBIT_PACKAGE_STRIP = "1"
 PRIVATE_LIBS_${PN} = "libEGL.so \
