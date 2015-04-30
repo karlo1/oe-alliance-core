@@ -109,7 +109,7 @@ IMAGE_INSTALL = "\
 	${@base_conditional('MACHINEBUILD', 'atemionemesis', '', 'titan-xbmc', d)} \
     "
 # disabled building on svn
-	${@base_conditional('MACHINE', 'inihdp', '', 'titan-xbmc', d)} \
+#    ${@base_conditional('MACHINE', 'inihdp', '', 'titan-xbmc', d)} \
 #    titan-bin
 #    ${@base_contains("TARGET_ARCH", "mipsel", "gst-plugin-libxt" , "", d)} \
 #    titan-plugins
