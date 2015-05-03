@@ -3,17 +3,18 @@ SECTION = "base"
 PRIORITY = "required"
 LICENSE = "CLOSED"
 PACKAGE_ARCH = "${MACHINEBUILD}"
+require conf/license/license-close.inc
 
 KV = "3.14.2"
-SRCDATE = "20150114"
+SRCDATE = "20150304"
 
 PV = "${KV}+${SRCDATE}"
 PR = "r1"
 
-SRC_URI[md5sum] = "486ba1beea83bb9db8b0944d729cbac1"
-SRC_URI[sha256sum] = "1c3bfaf50221f904ac76244f0c6829eb47c7c7994de1a629f726c88edb2b1558"
+SRC_URI[md5sum] = "656ac495bf0f7b7345a828769a3c05b1"
+SRC_URI[sha256sum] = "56b7f21e90dccb6adc59aaeccb9d1a720a5c84e379416351474adc6560477971"
 
-SRC_URI = "http://code-ini.com/software/drivers/ini-422-drivers-${KV}-${SRCDATE}.zip"
+SRC_URI = "http://code-ini.com/software/drivers/ini-442sv-drivers-${KV}-${SRCDATE}.zip"
 
 S = "${WORKDIR}"
 

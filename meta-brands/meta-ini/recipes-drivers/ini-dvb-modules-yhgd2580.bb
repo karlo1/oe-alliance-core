@@ -1,20 +1,20 @@
-SUMMARY = "Hardware drivers for ${MACHINEBUILD}"
+SUMMARY = "Hardware drivers for ${MACHINE}"
 SECTION = "base"
 PRIORITY = "required"
 LICENSE = "CLOSED"
 PACKAGE_ARCH = "${MACHINEBUILD}"
 require conf/license/license-close.inc
 
-KV = "3.14.2"
-SRCDATE = "20150113"
+KV = "3.12.1"
+SRCDATE = "20150420"
 
 PV = "${KV}+${SRCDATE}"
-PR = "r4"
+PR = "r1"
 
-SRC_URI[md5sum] = "f171bdc460ea2732967de6284092e559"
-SRC_URI[sha256sum] = "3939575eac9503c9321b6ea9bd4b1b5b7564b513145fd248ca75dda968e4ee83"
+SRC_URI[md5sum] = "ced23ec29f4a5fca4ccd02d3af8d04f5"                                                                                                                                                                                         
+SRC_URI[sha256sum] = "9fd6ac5b41c03901fdfc376cb4fba0ba1f018961b4eef3ba82d957296e1d4624"
 
-SRC_URI = "http://code-ini.com/software/drivers/ini-900-drivers-${KV}-${SRCDATE}.zip"
+SRC_URI = "http://code-ini.com/software/drivers/yhgd2580-drivers-${KV}-${SRCDATE}.zip"
 
 S = "${WORKDIR}"
 

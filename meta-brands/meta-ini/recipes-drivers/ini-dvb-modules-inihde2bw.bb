@@ -3,18 +3,17 @@ SECTION = "base"
 PRIORITY = "required"
 LICENSE = "CLOSED"
 PACKAGE_ARCH = "${MACHINEBUILD}"
-require conf/license/license-close.inc
 
 KV = "3.14.2"
-SRCDATE = "20150113"
+SRCDATE = "20150407"
 
 PV = "${KV}+${SRCDATE}"
-PR = "r4"
+PR = "r1"
 
-SRC_URI[md5sum] = "f171bdc460ea2732967de6284092e559"
-SRC_URI[sha256sum] = "3939575eac9503c9321b6ea9bd4b1b5b7564b513145fd248ca75dda968e4ee83"
+SRC_URI[md5sum] = "2303722a6a3531f5e68396144ad802af"
+SRC_URI[sha256sum] = "00c02ddb748d5dc2b944a4d5f47572141f9019eadf8df8188c5d741601f6811a"
 
-SRC_URI = "http://code-ini.com/software/drivers/ini-900-drivers-${KV}-${SRCDATE}.zip"
+SRC_URI = "http://code-ini.com/software/drivers/yhgd2580-drivers-${KV}-${SRCDATE}.zip"
 
 S = "${WORKDIR}"
 
