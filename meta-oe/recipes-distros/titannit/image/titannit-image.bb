@@ -105,11 +105,12 @@ IMAGE_INSTALL = "\
     ", d)} \
     ${@base_contains("TARGET_ARCH", "sh4", "alsa-utils-amixer-conf" , "", d)} \
     ${@base_contains("TARGET_ARCH", "sh4", "libmmeimage " , "", d)} \
-	${@base_conditional('MACHINEBUILD', 'atemionemesis', '', 'titan-xbmc', d)} \
+	${@base_contains('MACHINEBUILD', 'atemionemesis', '', 'titan-xbmc', d)} \
 	titan-bin \
     "
 # disabled building on svn
 #    ${@base_conditional('MACHINE', 'inihdp', '', 'titan-xbmc', d)} \
+#	${@base_contains('MACHINEBUILD', 'atemionemesis', '', 'titan-xbmc', d)} \
 #    titan-bin
 #    ${@base_contains("TARGET_ARCH", "mipsel", "gst-plugin-libxt" , "", d)} \
 #    titan-plugins
