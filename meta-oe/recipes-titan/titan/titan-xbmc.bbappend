@@ -59,20 +59,20 @@ PR = "${BUILD_PR}_${NATIVEGLES_PR}_${SRCREV}"
 
 SRC_URI = "git://code.vuplus.com/git/xbmc.git;protocol=http;branch=${BRANCH};tag=${SRCREV} \
 	http://archive.vuplus.com/download/build_support/xbmc-support_${NATIVEGLES_PR}.tar.gz;name=xbmc-support \
+	file://configure.in-vu.patch \
 "
 S = "${WORKDIR}/git"
 
 EXTRA_OECONF = " \
 	--disable-rpath \
-	--enable-gles \
 	--enable-libusb \
 	--enable-airplay \
 	--disable-optical-drive \
 	--enable-external-libraries \
-	--disable-ssh \
+	--enable-sdl \
 	--enable-external_ffmpeg \
+	--disable-ssh \
 	--disable-x11 \
-	--disable-sdl \
 	--disable-joystick \
 	--disable-alsa \
 	--disable-libcec \
@@ -81,7 +81,12 @@ EXTRA_OECONF = " \
 	--disable-texturepacker \
 	--with-platform=dvbbox \
 "
-
+#	--disable-external-ffmpeg
+#	--with-platform=dvbbox
+#	--enable-external_ffmpeg
+#	--enable-gles
+#	--disable-sdl
+	
 do_configure_prepend(){
 	cp -av ${WORKDIR}/xbmc-support/gles_init.* ${WORKDIR}/git/xbmc/windowing/egl/
     cd ${S}

@@ -1,0 +1,21 @@
+--- a/configure.in	2015-05-05 13:00:57.000000000 +0200
++++ a/configure.in.patched	2015-05-05 13:39:23.000000000 +0200
+@@ -518,6 +518,18 @@
+      use_arch="arm"
+      AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX -D_ARMEL")
+      ;;
++# oskwon
++  mipsel-*-linux*|mipsel*linux)
++     ARCH="mips"
++     use_arch="mips"
++     ffmpeg_target_os=linux
++     use_joystick=no
++     use_gles=yes
++     use_sdl=no
++     use_x11=no
++     use_wayland=no
++     use_static_ffmpeg=no
++     ;;
+   *)
+      AC_MSG_ERROR(unsupported host ($host))
+ esac
