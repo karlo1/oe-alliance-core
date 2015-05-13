@@ -10,7 +10,6 @@ PV = "${IMAGE_VERSION}"
 PR = "r${DATETIME}"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-
 IMAGE_INSTALL = "\
     aio-grab \
     alsa-conf \
