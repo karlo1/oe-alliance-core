@@ -37,13 +37,11 @@ IMAGE_INSTALL = "\
     kernel-module-belkin-sa \
     kernel-module-keyspan \
     kernel-module-ipv6 \
-    libavahi-client \
     libcrypto-compat-0.9.7 \
     libcrypto-compat-0.9.8 \
     libdreamdvd \
     libdvdcss \
     libusb1 \
-    minidlna \
     mjpegtools \
     module-init-tools-depmod \
     modutils-loadscript \
@@ -106,8 +104,11 @@ IMAGE_INSTALL = "\
     ${@base_contains("TARGET_ARCH", "sh4", "alsa-utils-amixer-conf" , "", d)} \
     ${@base_contains("TARGET_ARCH", "sh4", "libmmeimage " , "", d)} \
 	titan-bin \
+	titan-xbmc
     "
 # disabled building on svn
+#    libavahi-client
+#    minidlna
 #    ${@base_contains('MACHINEBUILD', 'atemionemesis', '', 'titan-xbmc', d)} \
 #    ${@base_conditional('MACHINE', 'inihdp', '', 'titan-xbmc', d)} \
 #    ${@base_contains('MACHINEBUILD', 'atemionemesis', '', 'titan-xbmc', d)} \

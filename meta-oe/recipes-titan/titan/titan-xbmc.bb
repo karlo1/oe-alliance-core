@@ -10,6 +10,7 @@ DEPENDS = "libvorbis"
 
 #require recipes/egl/egl.inc
 
+#SRCREV = "7cc53a9a3da77869d1d5d3d3d9971b4bd1641b50"
 SRCREV = "${AUTOREV}"
 
 # multiple issues
@@ -160,6 +161,12 @@ do_configure() {
 	make -j 8
 	make install DESTDIR=${STAGING_DIR_TARGET}
     cd ${S}
+
+#via root
+#cd /home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihdp/tmp/work/mips32el-oe-linux/titan-xbmc/helix+gitrAUTOINC+7cc53a9a3d-r14/git/tools/depends/native
+#git clean -xfd
+#/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/work-shared/gcc-4.9.1-r0/gcc-4.9.1/configure --build=x86_64-linux --host=x86_64-linux --target=mipsel-oe-linux --prefix=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr --exec_prefix=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr --bindir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/bin/mipsel-oe-linux --sbindir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/bin/mipsel-oe-linux --libexecdir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/libexec/mipsel-oe-linux --datadir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/share --sysconfdir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/etc --sharedstatedir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/com --localstatedir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/var --libdir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/lib/mipsel-oe-linux --includedir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/include --oldincludedir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/include --infodir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/share/info --mandir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/share/man --disable-silent-rules --disable-dependency-tracking --with-libtool-sysroot=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux --enable-clocale=generic --with-gnu-ld --enable-shared --enable-languages=c,c++ --enable-threads=posix --disable-multilib --enable-c99 --enable-long-long --enable-symvers=gnu --enable-libstdcxx-pch --program-prefix=mipsel-oe-linux- --without-local-prefix --enable-target-optspace --enable-lto --enable-libssp --disable-bootstrap --disable-libmudflap --with-system-zlib --with-linker-hash-style=sysv --enable-linker-build-id --with-ppl=no --with-cloog=no --enable-checking=release --enable-cheaders=c_global --with-gxx-include-dir=/not/exist/usr/include/c++/4.9.1 --with-sysroot=/not/exist --with-build-sysroot=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/inihde --enable-poison-system-directories --with-mpfr=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr --with-system-zlib --disable-nls --enable-__cxa_atexit
+#make -C /home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihdp/tmp/work/mips32el-oe-linux/titan-xbmc/helix+gitrAUTOINC+7cc53a9a3d-r14/git/tools/depends/native/JsonSchemaBuilder/
 
 #    mkdir ${S}/tools/depends/native/JsonSchemaBuilder/bin/
 #    ln -s /bin/JsonSchemaBuilder ${S}/tools/depends/native/JsonSchemaBuilder/bin/
