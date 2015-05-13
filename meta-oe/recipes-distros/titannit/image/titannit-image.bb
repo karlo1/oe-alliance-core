@@ -104,7 +104,7 @@ IMAGE_INSTALL = "\
     ${@base_contains("TARGET_ARCH", "sh4", "alsa-utils-amixer-conf" , "", d)} \
     ${@base_contains("TARGET_ARCH", "sh4", "libmmeimage " , "", d)} \
 	titan-bin \
-	titan-xbmc
+	titan-xbmc \
     "
 # disabled building on svn
 #    libavahi-client
