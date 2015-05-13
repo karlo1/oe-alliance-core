@@ -8,11 +8,11 @@
 -		.offset = 0,
 -		.size = MTDPART_SIZ_FULL,
 +		.name   = "rootfs",
-+		.size   = 0x10000000,
++		.size   = 0x20000000,
 +		.offset = 0x700000,
 +	}, {
 +		.name   = "mnt",
-+		.size   = 0x6F500000, //MTDPART_SIZ_FULL,
++		.size   = 0x5F500000, //MTDPART_SIZ_FULL,
 +		.offset = MTDPART_OFS_APPEND
  	}, {
 -		.name = "kernel",
