@@ -58,6 +58,30 @@ IMAGE_INSTALL = "\
     procps \
     portmap \
     portmap-utils \
+    python-codecs \
+    python-core \
+    python-crypt \
+    python-fcntl \
+    python-html \
+    python-lang \
+    python-netclient \
+    python-netserver \
+    python-pickle \
+    python-re \
+    python-shell \
+    python-threading \
+    python-twisted-core \
+    python-twisted-web \
+    python-utf8-hack \
+    python-xml \
+    python-zlib \
+    python-zopeinterface \
+    python-email \
+    python-mime \
+    python-pyusb \
+    python-subprocess \
+    python-process \
+    python-imaging \
     rt8812au \
     rt8723a \
     rtmpdump \
@@ -104,7 +128,8 @@ IMAGE_INSTALL = "\
     ${@base_contains("TARGET_ARCH", "sh4", "alsa-utils-amixer-conf" , "", d)} \
     ${@base_contains("TARGET_ARCH", "sh4", "libmmeimage " , "", d)} \
 	titan-bin \
-	titan-xbmc \
+	${@base_conditional('MACHINE', 'inihdp', '', 'titan-xbmc', d)} \
+    ${@base_contains('MACHINEBUILD', 'atemionemesis', '', 'titan-xbmc', d)} \
     "
 # disabled building on svn
 #    libavahi-client
