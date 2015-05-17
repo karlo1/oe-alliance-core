@@ -48,7 +48,8 @@ EXTRA_OECONF = " \
 	--enable-airplay \
 	--disable-optical-drive \
 	--disable-ssh \
-	--disable-x11 \
+	--disable-debug \
+	--enable-x11 \
 	--enable-sdl \
 	--disable-joystick \
 	--disable-alsa \
@@ -69,52 +70,6 @@ export BUILD_SYS
 export STAGING_LIBDIR
 export STAGING_INCDIR
 export PYTHON_DIR
-
-EXTRA_OECONF_FFMPEG = " \
-        --enable-shared \
-        --enable-pthreads \
-        --disable-stripping \
-        --enable-gpl \
-        --enable-nonfree \
-        --enable-postproc \
-        \
-        --cross-prefix=${TARGET_PREFIX} \
-        --prefix=${prefix} \
-        \
-        --arch=${TARGET_ARCH} \
-        --target-os=linux \
-        --host-os=x86_64 \
-        --pkg-config="pkg-config" \
-        --enable-cross-compile \
-        --disable-shared --enable-static \
-"
-
-FFMPEG_CONFIGURE  = "--disable-static --enable-shared --enable-small --disable-runtime-cpudetect"
-FFMPEG_CONFIGURE += "--disable-ffserver --disable-ffplay --disable-ffprobe"
-FFMPEG_CONFIGURE += "--disable-doc --disable-htmlpages --disable-manpages --disable-podpages --disable-txtpages"
-FFMPEG_CONFIGURE += "--disable-asm --disable-altivec --disable-amd3dnow --disable-amd3dnowext --disable-mmx --disable-mmxext"
-FFMPEG_CONFIGURE += "--disable-sse --disable-sse2 --disable-sse3 --disable-ssse3 --disable-sse4 --disable-sse42 --disable-avx --disable-fma4"
-#FFMPEG_CONFIGURE += "--disable-armv5te --disable-armv6 --disable-armv6t2 --disable-vfp --disable-neon --disable-vis --disable-inline-asm"
-FFMPEG_CONFIGURE += "--disable-armv5te --disable-armv6 --disable-armv6t2 --disable-vfp --disable-neon --disable-inline-asm"
-
-FFMPEG_CONFIGURE += "--disable-yasm --disable-mips32r2 --disable-mipsdspr1 --disable-mipsdspr2 --disable-mipsfpu --disable-fast-unaligned"
-FFMPEG_CONFIGURE += "--disable-muxers"
-FFMPEG_CONFIGURE += "--enable-muxer=flac --enable-muxer=mp3 --enable-muxer=h261 --enable-muxer=h263 --enable-muxer=h264"
-FFMPEG_CONFIGURE += "--enable-muxer=image2 --enable-muxer=mpeg1video --enable-muxer=mpeg2video --enable-muxer=ogg"
-FFMPEG_CONFIGURE += "--disable-encoders"
-FFMPEG_CONFIGURE += "--enable-encoder=aac --enable-encoder=h261 --enable-encoder=h263 --enable-encoder=h263p --enable-encoder=ljpeg"
-FFMPEG_CONFIGURE += "--enable-encoder=mjpeg --enable-encoder=mpeg1video --enable-encoder=mpeg2video --enable-encoder=png"
-FFMPEG_CONFIGURE += "--disable-decoders"
-FFMPEG_CONFIGURE += "--enable-decoder=aac --enable-decoder=dvbsub --enable-decoder=dvdsub --enable-decoder=flac --enable-decoder=h261 --enable-decoder=h263"
-FFMPEG_CONFIGURE += "--enable-decoder=h263i --enable-decoder=h264 --enable-decoder=iff_byterun1 --enable-decoder=mjpeg"
-FFMPEG_CONFIGURE += "--enable-decoder=mp3 --enable-decoder=mpeg1video --enable-decoder=mpeg2video --enable-decoder=png"
-FFMPEG_CONFIGURE += "--enable-decoder=theora --enable-decoder=vorbis --enable-decoder=wmv3 --enable-decoder=pcm_s16le"
-FFMPEG_CONFIGURE += "--enable-decoder=rawvideo --enable-decoder=wmapro --enable-decoder=wmav1 --enable-decoder=wmav2 --enable-decoder=wmavoice"
-FFMPEG_CONFIGURE += "--enable-decoder=iff_byterun1 --enable-decoder=ra_144 --enable-decoder=ra_288"
-FFMPEG_CONFIGURE += "--enable-demuxer=mjpeg --enable-demuxer=wav --enable-demuxer=rtsp"
-FFMPEG_CONFIGURE += "--enable-parser=mjpeg"
-FFMPEG_CONFIGURE += "--disable-indevs --disable-outdevs --disable-bsfs --disable-debug"
-FFMPEG_CONFIGURE += "--enable-pthreads --enable-bzlib --enable-zlib --enable-librtmp --enable-stripping"
 
 # configuration settings
 #ffmpg_config = "--prefix=$(PREFIX) --extra-version="xbmc-$(VERSION)"
@@ -152,10 +107,15 @@ EXTRA_OECONF_FFMPEG = " \
 "
 
 do_configure() {
-    ${S}/tools/depends/target/ffmpeg/autobuild.sh -d --arch=${TARGET_ARCH} --prefix=${S}/tools/depends/target/ffmpeg/ffmpeg-2.4.6-Helix
-	tar -zxvf ${S}/tools/depends/target/ffmpeg/ffmpeg-2.4.6-Helix.tar.gz -C ${S}/tools/depends/target/ffmpeg
-	cd ${S}/tools/depends/target/ffmpeg/FFmpeg-2.4.6-Helix
-	${S}/tools/depends/target/ffmpeg/FFmpeg-2.4.6-Helix/configure ${EXTRA_OECONF_FFMPEG} ${ffmpg_config}
+	FVERSION=`cat ${S}/tools/depends/target/ffmpeg/FFMPEG-VERSION | grep VERSION= | cut -d "=" -f2`
+	echo "FVERSION: $FVERSION"
+    ${S}/tools/depends/target/ffmpeg/autobuild.sh -d --arch=${TARGET_ARCH} --prefix=${S}/tools/depends/target/ffmpeg/ffmpeg-${FVERSION}
+	tar -zxvf ${S}/tools/depends/target/ffmpeg/ffmpeg-${FVERSION}.tar.gz -C ${S}/tools/depends/target/ffmpeg
+	cd ${S}/tools/depends/target/ffmpeg/FFmpeg-${FVERSION}
+	VERSION=`cat ${S}/version.txt | grep ADDON_API | cut -d " " -f2`
+	echo "VERSION: $VERSION"
+
+	${S}/tools/depends/target/ffmpeg/FFmpeg-${FVERSION}/configure ${EXTRA_OECONF_FFMPEG} ${ffmpg_config} --extra-version="xbmc-${VERSION}"
 	make -j 8
 	make install DESTDIR=${STAGING_DIR_TARGET}
 
@@ -169,24 +129,11 @@ do_configure() {
 
     cd ${S}
 
-#via root
-#cd /home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihdp/tmp/work/mips32el-oe-linux/titan-xbmc/helix+gitrAUTOINC+7cc53a9a3d-r14/git/tools/depends/native
-#git clean -xfd
-#/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/work-shared/gcc-4.9.1-r0/gcc-4.9.1/configure --build=x86_64-linux --host=x86_64-linux --target=mipsel-oe-linux --prefix=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr --exec_prefix=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr --bindir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/bin/mipsel-oe-linux --sbindir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/bin/mipsel-oe-linux --libexecdir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/libexec/mipsel-oe-linux --datadir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/share --sysconfdir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/etc --sharedstatedir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/com --localstatedir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/var --libdir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/lib/mipsel-oe-linux --includedir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/include --oldincludedir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/include --infodir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/share/info --mandir=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr/share/man --disable-silent-rules --disable-dependency-tracking --with-libtool-sysroot=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux --enable-clocale=generic --with-gnu-ld --enable-shared --enable-languages=c,c++ --enable-threads=posix --disable-multilib --enable-c99 --enable-long-long --enable-symvers=gnu --enable-libstdcxx-pch --program-prefix=mipsel-oe-linux- --without-local-prefix --enable-target-optspace --enable-lto --enable-libssp --disable-bootstrap --disable-libmudflap --with-system-zlib --with-linker-hash-style=sysv --enable-linker-build-id --with-ppl=no --with-cloog=no --enable-checking=release --enable-cheaders=c_global --with-gxx-include-dir=/not/exist/usr/include/c++/4.9.1 --with-sysroot=/not/exist --with-build-sysroot=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/inihde --enable-poison-system-directories --with-mpfr=/home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihde/tmp/sysroots/x86_64-linux/usr --with-system-zlib --disable-nls --enable-__cxa_atexit
-#make -C /home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihdp/tmp/work/mips32el-oe-linux/titan-xbmc/helix+gitrAUTOINC+7cc53a9a3d-r14/git/tools/depends/native/JsonSchemaBuilder/
-
-#    mkdir ${S}/tools/depends/native/JsonSchemaBuilder/bin/
-#    ln -s /bin/JsonSchemaBuilder ${S}/tools/depends/native/JsonSchemaBuilder/bin/
-#    touch ${S}/tools/depends/native/JsonSchemaBuilder/bin/.installed-native
-
-#    mkdir /home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihdp/tmp/work/mips32el-oe-linux/titan-xbmc/helix+gitrAUTOINC+7cc53a9a3d-r14/git/tools/depends/native/JsonSchemaBuilder/bin/
-#    ln -s /bin/JsonSchemaBuilder /home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihdp/tmp/work/mips32el-oe-linux/titan-xbmc/helix+gitrAUTOINC+7cc53a9a3d-r14/git/tools/depends/native/JsonSchemaBuilder/bin/
-#	 touch /home/aaf-svn/flashimg/BUILDGIT/checkout_mips360/builds/titannit/inihdp/tmp/work/mips32el-oe-linux/titan-xbmc/helix+gitrAUTOINC+7cc53a9a3d-r14/git/tools/depends/native/JsonSchemaBuilder/bin/.installed-native
     ./bootstrap
     oe_runconf
 }
 
-PARALLEL_MAKE = " "
+#PARALLEL_MAKE = " "
 
 do_compile_prepend() {
     for i in $(find . -name "Makefile") ; do
@@ -213,7 +160,15 @@ do_install_append_arm() {
     sed -i -e 's:Exec=xbmc:Exec=${libdir}/xbmc/xbmc.bin:g' ${D}${datadir}/applications/xbmc.desktop
 }
 
-FILES_${PN} += "${datadir}/xsessions ${datadir}/icons"
+do_install_append(){
+#	install -d ${D}${bindir}
+#	install -m 0755 ${WORKDIR}/xbmc-support/xbmc.helper ${D}${bindir}
+}
+
+do_package_qa(){
+}
+
+FILES_${PN} += "/usr/bin /usr/share /usr/lib"
 FILES_${PN}-dbg += "${libdir}/xbmc/.debug ${libdir}/xbmc/*/.debug ${libdir}/xbmc/*/*/.debug ${libdir}/xbmc/*/*/*/.debug"
 
 # xbmc uses some kind of dlopen() method for libcec so we need to add it manually
