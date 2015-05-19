@@ -116,9 +116,11 @@ do_configure() {
 	cd ${S}/tools/depends/target/ffmpeg/FFmpeg-${FVERSION}
 	VERSION=`cat ${S}/version.txt | grep ADDON_API | cut -d " " -f2`
 	echo "VERSION: $VERSION"
+	THREADS=`grep -c "^processor" /proc/cpuinfo`
+	echo "THREADS: $THREADS"
 
 	${S}/tools/depends/target/ffmpeg/FFmpeg-${FVERSION}/configure ${EXTRA_OECONF_FFMPEG} ${ffmpg_config} --extra-version="xbmc-${VERSION}"
-	make -j 8
+	make -j ${THREADS}
 	make install DESTDIR=${STAGING_DIR_TARGET}
 
 	cd ${S}/tools/depends/native/JsonSchemaBuilder/src
