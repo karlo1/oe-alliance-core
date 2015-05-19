@@ -16,10 +16,12 @@ PNBLACKLIST[xbmc] ?= "/usr/include/c++/ctime:70:11: error: '::gmtime' has not be
 
 PV = "auto+helix+gitr${SRCPV}"
 PR = "r14"
+NATIVEGLES_PR="20141202_p0"
 
 SRC_URI = "git://github.com/xbmc/xbmc.git;branch=Helix \
            file://0001-configure-don-t-run-python-distutils-to-find-STAGING.patch \
            file://configure.in-helix.patch \
+           http://archive.vuplus.com/download/build_support/xbmc-support_${NATIVEGLES_PR}.tar.gz;name=xbmc-support \
 "
 
 inherit autotools gettext python-dir
@@ -131,6 +133,11 @@ do_configure() {
 
     ./bootstrap
     oe_runconf
+}
+
+do_configure_prepend(){
+	cp -av ${WORKDIR}/xbmc-support/gles_init.* ${WORKDIR}/git/xbmc/windowing/egl/
+    cd ${S}
 }
 
 #PARALLEL_MAKE = " "
