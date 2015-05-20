@@ -21,8 +21,9 @@ NATIVEGLES_PR="20141202_p0"
 SRC_URI = "git://github.com/xbmc/xbmc.git;branch=Helix \
            file://0001-configure-don-t-run-python-distutils-to-find-STAGING.patch \
            file://configure.in-helix.patch \
-           http://archive.vuplus.com/download/build_support/xbmc-support_${NATIVEGLES_PR}.tar.gz;name=xbmc-support \
 "
+# file://EGLNativeTypeDvbBox
+# http://archive.vuplus.com/download/build_support/xbmc-support_${NATIVEGLES_PR}.tar.gz;name=xbmc-support
 
 inherit autotools gettext python-dir
 
@@ -137,10 +138,10 @@ do_configure() {
     oe_runconf
 }
 
-do_configure_prepend(){
-	cp -av ${WORKDIR}/xbmc-support/gles_init.* ${WORKDIR}/git/xbmc/windowing/egl/
-    cd ${S}
-}
+#do_configure_prepend(){
+#	cp -av ${WORKDIR}/xbmc-support/gles_init.* ${WORKDIR}/git/xbmc/windowing/egl/
+#    cd ${S}
+#}
 
 #PARALLEL_MAKE = " "
 
