@@ -83,7 +83,7 @@
 -#elif defined(_MIPSEL)
 -#define ADDON_HELPER_ARCH       "mipsel-linux"
 +#elif defined(__mips__)
-+#define ADDON_HELPER_ARCH       "mips"
++#define ADDON_HELPER_ARCH       "mipsel-oe-linux"
  #else
  #define ADDON_HELPER_ARCH       "i486-linux"
  #endif
