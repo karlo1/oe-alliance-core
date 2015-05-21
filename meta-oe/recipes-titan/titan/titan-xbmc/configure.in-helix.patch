@@ -210,18 +210,6 @@
  
    // Linux assembly is AT&T Unix style, not Intel style
 
---- a/xbmc/windowing/egl/Makefile.in	2015-05-17 19:14:10.000000000 +0200
-+++ a/xbmc/windowing/egl/Makefile.in.patched	2015-05-19 15:54:22.000000000 +0200
-@@ -25,6 +25,8 @@
-        wayland/XBMCSurface.cpp
- endif
- 
-+SRCS+= EGLNativeTypeDvbBox.cpp
-+
- LIB = windowing_egl.a
- 
- include ../../../Makefile.include
-
 --- a/xbmc/cores/AudioEngine/AEFactory.cpp	2015-05-20 09:29:26.000000000 +0200
 +++ a/xbmc/cores/AudioEngine/AEFactory.cpp.patched	2015-05-20 18:07:42.000000000 +0200
 @@ -40,6 +40,7 @@
