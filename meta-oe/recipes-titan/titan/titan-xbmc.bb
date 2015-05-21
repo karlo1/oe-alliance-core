@@ -112,7 +112,17 @@ EXTRA_OECONF_FFMPEG = " \
 do_configure() {
 	FVERSION=`cat ${S}/tools/depends/target/ffmpeg/FFMPEG-VERSION | grep VERSION= | cut -d "=" -f2`
 	echo "FVERSION: $FVERSION"
-    ${S}/tools/depends/target/ffmpeg/autobuild.sh -d --arch=${TARGET_ARCH} --prefix=${S}/tools/depends/target/ffmpeg/ffmpeg-${FVERSION}
+#    ${S}/tools/depends/target/ffmpeg/autobuild.sh -d --arch=${TARGET_ARCH} --prefix=${S}/tools/depends/target/ffmpeg/ffmpeg-${FVERSION}
+
+	BASE_URL=$(grep "BASE_URL=" FFMPEG-VERSION | sed 's/BASE_URL=//g')
+	FVERSION=$(grep "VERSION=" FFMPEG-VERSION | sed 's/VERSION=//g')
+	echo "FVERSION: $FVERSION"
+	ARCHIVE=ffmpeg-${FVERSION}.tar.gz
+
+	cd ${S}/tools/depends/target/ffmpeg
+	wget ${BASE_URL}/${FVERSION}.tar.gz -O ${ARCHIVE}
+#	wget https://github.com/xbmc/FFmpeg/archive/2.4.6-Helix.tar.gz
+
 	tar -zxvf ${S}/tools/depends/target/ffmpeg/ffmpeg-${FVERSION}.tar.gz -C ${S}/tools/depends/target/ffmpeg
 	cd ${S}/tools/depends/target/ffmpeg/FFmpeg-${FVERSION}
 	VERSION=`cat ${S}/version.txt | grep ADDON_API | cut -d " " -f2`
