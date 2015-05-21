@@ -114,12 +114,11 @@ do_configure() {
 	echo "FVERSION: $FVERSION"
 #    ${S}/tools/depends/target/ffmpeg/autobuild.sh -d --arch=${TARGET_ARCH} --prefix=${S}/tools/depends/target/ffmpeg/ffmpeg-${FVERSION}
 
+	cd ${S}/tools/depends/target/ffmpeg
 	BASE_URL=$(grep "BASE_URL=" FFMPEG-VERSION | sed 's/BASE_URL=//g')
 	FVERSION=$(grep "VERSION=" FFMPEG-VERSION | sed 's/VERSION=//g')
 	echo "FVERSION: $FVERSION"
 	ARCHIVE=ffmpeg-${FVERSION}.tar.gz
-
-	cd ${S}/tools/depends/target/ffmpeg
 	wget ${BASE_URL}/${FVERSION}.tar.gz -O ${ARCHIVE}
 #	wget https://github.com/xbmc/FFmpeg/archive/2.4.6-Helix.tar.gz
 
