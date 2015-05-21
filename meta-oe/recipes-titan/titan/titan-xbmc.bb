@@ -24,6 +24,7 @@ SRC_URI = "git://github.com/xbmc/xbmc.git;branch=Helix \
            file://EGLNativeTypeDvbBox.patch \
            http://archive.vuplus.com/download/build_support/xbmc-support_${NATIVEGLES_PR}.tar.gz;name=xbmc-support \
 "
+
 # file://EGLNativeTypeDvbBox.patch
 # http://archive.vuplus.com/download/build_support/xbmc-support_${NATIVEGLES_PR}.tar.gz;name=xbmc-support
 
