@@ -103,8 +103,8 @@
  
  ifeq ($(findstring osx,@ARCH@), osx)
  	$(SILENT_LD) $(CXX) $(LDFLAGS) -o @APP_NAME_LC@.bin $(MAINOBJS) -Wl,-all_load,-ObjC $(MAINOBJS) $(DYNOBJSXBMC) $(NWAOBJSXBMC) $(OBJSXBMC) $(LIBS) -rdynamic
-+else ifeq ($(findstring mips,@ARCH@), mips) # oskwon
-+	$(SILENT_LD) $(CXX) $(LDFLAGS) -o @APP_NAME_LC@.bin $(MAINOBJS) -Wl,-all_load,-ObjC $(MAINOBJS) $(DYNOBJSXBMC) $(NWAOBJSXBMC) $(OBJSXBMC) $(LIBS) -rdynamic xbmc/windowing/egl/gles_init.a -ldvb_base -lnxpl -ldvb_client
++#else ifeq ($(findstring mips,@ARCH@), mips) # oskwon
++#	$(SILENT_LD) $(CXX) $(LDFLAGS) -o @APP_NAME_LC@.bin $(MAINOBJS) -Wl,-all_load,-ObjC $(MAINOBJS) $(DYNOBJSXBMC) $(NWAOBJSXBMC) $(OBJSXBMC) $(LIBS) -rdynamic xbmc/windowing/egl/gles_init.a -ldvb_base -lnxpl -ldvb_client
  else
  	$(SILENT_LD) $(CXX) $(CXXFLAGS) $(LDFLAGS) -o @APP_NAME_LC@.bin $(MAINOBJS) -Wl,--start-group $(MAINOBJS) $(DYNOBJSXBMC) $(OBJSXBMC) -Wl,--end-group $(NWAOBJSXBMC) $(LIBS) -rdynamic
  endif
@@ -329,9 +329,9 @@
  #include "EGLNativeTypeIMX.h"
  #include "EGLWrapper.h"
  
-+#if defined(TARGET_DVBBOX) // oskwon
-+#include "EGLNativeTypeDvbBox.h"
-+#endif
++//#if defined(TARGET_DVBBOX) // oskwon
++//#include "EGLNativeTypeDvbBox.h"
++//#endif
 +
  #define CheckError() m_result = eglGetError(); if(m_result != EGL_SUCCESS) CLog::Log(LOGERROR, "EGL error in %s: %x",__FUNCTION__, m_result);
  
@@ -340,9 +340,9 @@
        (nativeGuess = CreateEGLNativeType<CEGLNativeTypeAndroid>(implementation)) ||
        (nativeGuess = CreateEGLNativeType<CEGLNativeTypeAmlogic>(implementation)) ||
        (nativeGuess = CreateEGLNativeType<CEGLNativeTypeRaspberryPI>(implementation)) ||
-+#if defined(TARGET_DVBBOX) // oskwon
-+      (nativeGuess = CreateEGLNativeType<CEGLNativeTypeDvbBox>(implementation)) ||
-+#endif
++//#if defined(TARGET_DVBBOX) // oskwon
++//      (nativeGuess = CreateEGLNativeType<CEGLNativeTypeDvbBox>(implementation)) ||
++//#endif
        (nativeGuess = CreateEGLNativeType<CEGLNativeTypeIMX>(implementation))
        )
    {
