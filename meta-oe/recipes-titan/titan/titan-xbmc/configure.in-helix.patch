@@ -24,7 +24,7 @@
  x11_disabled="== X11 disabled. =="
 +directfb_enabled="== directfb enabled. =="
 +directfb_disabled="== directfb disabled. =="
-+windowing_error="Could not enable directfb and X11 support
++windowing_error="Could not enable directfb and X11 support"
  pulse_not_found="== Could not find libpulse. PulseAudio support disabled. =="
  pulse_disabled="== PulseAudio support disabled. =="
  dvdcss_enabled="== DVDCSS support enabled. =="
