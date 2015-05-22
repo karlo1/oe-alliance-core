@@ -371,10 +371,12 @@
  };
  
  typedef enum
-@@ -527,6 +531,13 @@
+@@ -527,9 +531,17 @@
  
      KeymapEntry entry;
      entry.code = code;
++
++    int keyMapValue;
 +#if defined(TARGET_DVBBOX) // oskwon
 +	if (devt.key.keysym.mod & (XBMCKMOD_SHIFT | XBMCKMOD_CAPS)) keyMapValue = entry.shift;
 +	else if (devt.key.keysym.mod & XBMCKMOD_ALT) keyMapValue = entry.alt;
@@ -384,8 +386,11 @@
 +#else
      if (GetKeymapEntry(entry))
      {
-       int keyMapValue;
-@@ -544,6 +555,7 @@
+-      int keyMapValue;
+       if (devt.key.keysym.mod & (XBMCKMOD_SHIFT | XBMCKMOD_CAPS)) keyMapValue = entry.shift;
+       else if (devt.key.keysym.mod & XBMCKMOD_ALT) keyMapValue = entry.alt;
+       else if (devt.key.keysym.mod & XBMCKMOD_META) keyMapValue = entry.altShift;
+@@ -544,6 +556,7 @@
          }
        }
      }
@@ -393,7 +398,7 @@
    }
  
    return true;
-@@ -712,6 +724,12 @@
+@@ -712,6 +725,12 @@
        break;
      }
  
@@ -406,7 +411,7 @@
      //printf("read event readlen = %d device name %s m_fileName %s\n", readlen, m_deviceName, m_fileName.c_str());
  
      // sanity check if we realy read the event
-@@ -956,6 +974,7 @@
+@@ -956,6 +975,7 @@
    if (fd < 0)
      return false;
  
@@ -414,7 +419,7 @@
    if (ioctl(fd, EVIOCGRAB, 1) && errno != EINVAL)
    {
      close(fd);
-@@ -963,6 +982,7 @@
+@@ -963,6 +983,7 @@
    }
  
    ioctl(fd, EVIOCGRAB, 0);
@@ -422,7 +427,7 @@
  
    close(fd);
  
-@@ -1055,6 +1075,7 @@
+@@ -1055,6 +1076,7 @@
      return false;
    }
  
@@ -430,7 +435,7 @@
    /* grab device */
    ret = ioctl(fd, EVIOCGRAB, 1);
    if (ret && errno != EINVAL)
-@@ -1063,6 +1084,7 @@
+@@ -1063,6 +1085,7 @@
      close(fd);
      return false;
    }
@@ -438,7 +443,7 @@
  
    // Set the socket to non-blocking
    int opts = 0;
-@@ -1130,7 +1152,9 @@
+@@ -1130,7 +1153,9 @@
  
  driver_open_device_error:
  
@@ -448,7 +453,7 @@
    if (m_vt_fd >= 0)
    {
      close(m_vt_fd);
-@@ -1204,9 +1228,10 @@
+@@ -1204,9 +1229,10 @@
   */
  void CLinuxInputDevice::Close()
  {
