@@ -99,6 +99,15 @@
  	$(MAKE) -C lib/snesapu/SNES/SNESAPU
  endif
  imagelib: dllloader
+@@ -528,6 +528,8 @@
+ 
+ ifeq ($(findstring osx,@ARCH@), osx)
+ 	$(SILENT_LD) $(CXX) $(LDFLAGS) -o @APP_NAME_LC@.bin $(MAINOBJS) -Wl,-all_load,-ObjC $(MAINOBJS) $(DYNOBJSXBMC) $(NWAOBJSXBMC) $(OBJSXBMC) $(LIBS) -rdynamic
++else ifeq ($(findstring mips,@ARCH@), mips) # oskwon
++	$(SILENT_LD) $(CXX) $(LDFLAGS) -o @APP_NAME_LC@.bin $(MAINOBJS) -Wl,-all_load,-ObjC $(MAINOBJS) $(DYNOBJSXBMC) $(NWAOBJSXBMC) $(OBJSXBMC) $(LIBS) -rdynamic xbmc/windowing/egl/gles_init.a -ldvb_base -lnxpl -ldvb_client
+ else
+ 	$(SILENT_LD) $(CXX) $(CXXFLAGS) $(LDFLAGS) -o @APP_NAME_LC@.bin $(MAINOBJS) -Wl,--start-group $(MAINOBJS) $(DYNOBJSXBMC) $(OBJSXBMC) -Wl,--end-group $(NWAOBJSXBMC) $(LIBS) -rdynamic
+ endif
 
 --- a/xbmc/cores/DllLoader/DllLoader.h	2015-05-07 17:47:06.000000000 +0200
 +++ a/xbmc/cores/DllLoader/DllLoader.h.patched	2015-05-07 17:51:35.000000000 +0200
