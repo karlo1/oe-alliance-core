@@ -24,7 +24,7 @@
  x11_disabled="== X11 disabled. =="
 +directfb_enabled="== directfb enabled. =="
 +directfb_disabled="== directfb disabled. =="
-+windowing_error="Could not enable directfb and X11 support simultaneously. Please disable one."
++windowing_error="Could not enable directfb and X11 support"
  pulse_not_found="== Could not find libpulse. PulseAudio support disabled. =="
  pulse_disabled="== PulseAudio support disabled. =="
  dvdcss_enabled="== DVDCSS support enabled. =="
@@ -773,7 +773,7 @@
 +  CWinSystemBase::UpdateResolutions();
 +
 +  m_dfb_surface->GetSize(m_dfb_surface, &width, &height);
-+  UpdateDesktopResolution(g_settings.m_ResInfo[RES_DESKTOP], 0, width, height, 0.0);
++  //UpdateDesktopResolution(g_settings.m_ResInfo[RES_DESKTOP], 0, width, height, 0.0);
 +}
 +
 +bool CWinSystemDFB::PresentRenderImpl(const CDirtyRegionList &dirty)
