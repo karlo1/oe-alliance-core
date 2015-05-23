@@ -24,7 +24,7 @@
  x11_disabled="== X11 disabled. =="
 +directfb_enabled="== directfb enabled. =="
 +directfb_disabled="== directfb disabled. =="
-+windowing_error="Could not enable directfb and X11 support"
++windowing_error="Could not enable directfb and X11 support simultaneously. Please disable one."
  pulse_not_found="== Could not find libpulse. PulseAudio support disabled. =="
  pulse_disabled="== PulseAudio support disabled. =="
  dvdcss_enabled="== DVDCSS support enabled. =="
@@ -917,4 +917,23 @@
    WINDOW_SYSTEM_ANDROID
  } WindowSystemType;
  
+--- a/xbmc/windowing/egl/EGLNativeTypeIMX.cpp	2015-05-23 01:34:27.000000000 +0200
++++ a/xbmc/windowing/egl/EGLNativeTypeIMX.cpp.patched	2015-05-23 01:48:40.000000000 +0200
+@@ -248,13 +248,15 @@
+ 
+ bool CEGLNativeTypeIMX::ShowWindow(bool show)
+ {
++  printf("CEGLNativeTypeIMX::ShowWindow\n");
+   // Force vsync by default
+-  eglSwapInterval(g_Windowing.GetEGLDisplay(), 1);
++  //eglSwapInterval(g_Windowing.GetEGLDisplay(), 1);
+   EGLint result = eglGetError();
+   if(result != EGL_SUCCESS)
+     CLog::Log(LOGERROR, "EGL error in %s: %x",__FUNCTION__, result);
+ 
+   return false;
++  //
+ }
+ 
+ int CEGLNativeTypeIMX::get_sysfs_str(std::string path, std::string& valstr) const
 
