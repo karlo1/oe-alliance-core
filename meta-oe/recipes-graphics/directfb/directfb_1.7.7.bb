@@ -1,7 +1,7 @@
 require directfb.inc
 
-RV = "1.7.7"
-PR = "r2"
+RV = "1.7-7"
+PR = "r1"
 
 DEPENDS += "sysfsutils mesa"
 
@@ -15,13 +15,14 @@ EXTRA_OECONF = "\
   --enable-fbdev=yes \
   --disable-freetype \
   --disable-x11 \
-  --enable-mesa \
   --enable-debug \
   --with-gfxdrivers='gles2' \
   --enable-idirectfbgl-egl \
   "
-#  --disable-fusion
 #  --enable-egl
+#  --enable-mesa
+#  --with-gfxdrivers='gles2'
+#  --enable-idirectfbgl-egl
 
 LEAD_SONAME = "libdirectfb-1.7.so.7"
 

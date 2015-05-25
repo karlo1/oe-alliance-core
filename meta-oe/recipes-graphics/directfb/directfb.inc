@@ -58,9 +58,10 @@ FILES_${PN}-dev += "\
 "
 
 FILES_${PN} += "\
-  ${libdir}/directfb-${RV}/systems/*.so \
+  ${libdir}/directfb-${RV}/gfxdrivers/*.so \
   ${libdir}/directfb-${RV}/inputdrivers/*.so \
   ${libdir}/directfb-${RV}/interfaces/*/*.so \
+  ${libdir}/directfb-${RV}/systems/*.so \
   ${libdir}/directfb-${RV}/wm/*.so \
   ${datadir}/directfb-${PV} \
 "
