@@ -3,16 +3,27 @@ require directfb.inc
 RV = "1.7.7"
 PR = "r2"
 
-DEPENDS += "sysfsutils"
+DEPENDS += "sysfsutils mesa"
 
 EXTRA_OECONF = "\
   --enable-freetype=yes \
   --enable-zlib \
-  --with-gfxdrivers=none \
   --disable-sdl \
   --disable-vnc \
+  --disable-png \
+  --disable-gif \
+  --enable-fbdev=yes \
+  --disable-freetype \
   --disable-x11 \
-"
+  --enable-mesa \
+  --enable-debug \
+  --with-gfxdrivers='gles2' \
+  --disable-fusion \
+  --enable-idirectfbgl-egl \
+  "
+#    --enable-egl
+#  --with-gfxdrivers='gles2'
+#  --enable-idirectfbgl-egl
 
 LEAD_SONAME = "libdirectfb-1.7.so.7"
 
