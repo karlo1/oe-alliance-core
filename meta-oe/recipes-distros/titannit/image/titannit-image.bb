@@ -127,7 +127,7 @@ IMAGE_INSTALL = "\
     ${@base_contains("TARGET_ARCH", "sh4", "alsa-utils-amixer-conf" , "", d)} \
     ${@base_contains("TARGET_ARCH", "sh4", "libmmeimage " , "", d)} \
 	titan-bin \
-	${@base_contains('MACHINE', 'inihdp', 'titan-xbmc-nightly', '', d)} \
+	${@base_contains('MACHINE', 'inihdp', 'titan-xbmc-helix', '', d)} \
 	${@base_contains('MACHINE', 'vusolo2', 'titan-xbmc-nightly', '', d)} \
     "
 # disabled building on svn
