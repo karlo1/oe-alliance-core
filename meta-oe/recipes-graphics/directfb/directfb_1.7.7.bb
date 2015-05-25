@@ -18,12 +18,10 @@ EXTRA_OECONF = "\
   --enable-mesa \
   --enable-debug \
   --with-gfxdrivers='gles2' \
-  --disable-fusion \
   --enable-idirectfbgl-egl \
   "
-#    --enable-egl
-#  --with-gfxdrivers='gles2'
-#  --enable-idirectfbgl-egl
+#  --disable-fusion
+#  --enable-egl
 
 LEAD_SONAME = "libdirectfb-1.7.so.7"
 
