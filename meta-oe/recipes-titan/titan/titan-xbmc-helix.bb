@@ -114,6 +114,23 @@ EXTRA_OECONF_FFMPEG = " \
 "
 
 do_configure() {
+	# cleanup
+	rm -rf ${STAGING_DIR_TARGET}/usr/lib/xbmc
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/xbmc
+	rm -rf ${STAGING_DIR_TARGET}/usr/lib/kodi
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/kodi
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/xsessions/kodi.desktop 
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/xsessions/xbmc.desktop
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/icons/hicolor/48x48/apps/kodi.png
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/icons/hicolor/32x32/apps/kodi.png
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/icons/hicolor/128x128/apps/kodi.png
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/icons/hicolor/16x16/apps/kodi.png
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/icons/hicolor/22x22/apps/kodi.png
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/icons/hicolor/64x64/apps/kodi.png
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/icons/hicolor/256x256/apps/kodi.png
+	rm -rf ${STAGING_DIR_TARGET}/usr/share/icons/hicolor/24x24/apps/kodi.png
+	rm -rf ${STAGING_DIR_TARGET}/usr/include/kodi
+
 	FVERSION=`cat ${S}/tools/depends/target/ffmpeg/FFMPEG-VERSION | grep VERSION= | cut -d "=" -f2`
 	echo "FVERSION: $FVERSION"
 #    ${S}/tools/depends/target/ffmpeg/autobuild.sh -d --arch=${TARGET_ARCH} --prefix=${S}/tools/depends/target/ffmpeg/ffmpeg-${FVERSION}
