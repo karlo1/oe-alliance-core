@@ -36,6 +36,7 @@ IMAGE_INSTALL = "\
     kernel-module-belkin-sa \
     kernel-module-keyspan \
     kernel-module-ipv6 \
+    kernel-module-tun \
     libcrypto-compat-0.9.7 \
     libcrypto-compat-0.9.8 \
     libdreamdvd \
