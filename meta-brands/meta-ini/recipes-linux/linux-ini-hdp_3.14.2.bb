@@ -37,6 +37,7 @@ SRC_URI += "http://code-ini.com/software/kernel/bcm7425-linux-${KV}-${SRCDATE}.t
 	file://mxl5007t-add-no_probe-and-no_reset-parameters.patch \
 	file://tda18271-advertise-supported-delsys.patch \
 	file://rt2800usb_fix_warn_tx_status_timeout_to_dbg.patch \
+	file://brcm_remove_entire_mtd.patch \
 	"
 
 S = "${WORKDIR}/linux-${PV}"
