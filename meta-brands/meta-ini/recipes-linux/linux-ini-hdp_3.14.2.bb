@@ -3,14 +3,14 @@ SECTION = "kernel"
 LICENSE = "GPLv2"
 
 KV = "3.14.2"
-SRCDATE = "20140601"
+SRCDATE = "20150603"
 
-SRC_URI[md5sum] = "b7c326591a95551e1570573603a0dfc4"
-SRC_URI[sha256sum] = "02edced87f59b5f36c25c47607d2dbef61828f736089ec7c24d703f9d70cb0f7"
+SRC_URI[md5sum] = "0a9eb4bab291ea6047a0c779c0dd4304"
+SRC_URI[sha256sum] = "81effcef755b6b0fe5a930b5bfc058ea1f5195b410819df1585dc52aff0f6d8c"
 
 LIC_FILES_CHKSUM = "file://${WORKDIR}/linux-${PV}/COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
-MACHINE_KERNEL_PR_append = ".2"
+MACHINE_KERNEL_PR_append = ".4"
 
 inherit machine_kernel_pr
 
@@ -32,12 +32,11 @@ SRC_URI += "http://code-ini.com/software/kernel/bcm7425-linux-${KV}-${SRCDATE}.t
 	file://cxd2820r-output-full-range-SNR.patch \
 	file://dvb_usb_disable_rc_polling.patch \
 	file://dvb-usb-dib0700-disable-sleep.patch \
-	file://fix-proc-cputype.patch \
 	file://iosched-slice_idle-1.patch \
 	file://it913x-switch-off-PID-filter-by-default.patch \
 	file://mxl5007t-add-no_probe-and-no_reset-parameters.patch \
 	file://tda18271-advertise-supported-delsys.patch \
-	file://brcm_remove_entire_mtd.patch \
+	file://rt2800usb_fix_warn_tx_status_timeout_to_dbg.patch \
 	"
 
 S = "${WORKDIR}/linux-${PV}"
